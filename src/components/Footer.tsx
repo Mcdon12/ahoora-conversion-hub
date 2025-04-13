@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
       <div className="container mx-auto py-12 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
               <img 
@@ -15,7 +15,7 @@ const Footer = () => {
               />
             </Link>
             <p className="text-gray-600 max-w-xs">
-              Ahoora helps businesses make better decisions with AI-powered insights and analytics.
+              Ahoora helps marketers make better decisions with AI-powered insights from their Google Ads data.
             </p>
             <div className="mt-4 flex space-x-4">
               <a href="#" className="text-gray-500 hover:text-ahoora-purple transition-colors">
@@ -42,16 +42,6 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-base font-semibold text-gray-900 mb-4">Solutions</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">Business Intelligence</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">Predictive Analytics</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">Decision Support</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">Machine Learning</a></li>
-            </ul>
-          </div>
-          
-          <div>
             <h3 className="text-base font-semibold text-gray-900 mb-4">Company</h3>
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">About Us</a></li>
@@ -66,7 +56,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">Documentation</a></li>
               <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">API Reference</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">Google Ads Tips</a></li>
               <li><a href="#" className="text-gray-600 hover:text-ahoora-purple transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
