@@ -21,7 +21,6 @@ const CTASection = () => {
             <Button 
               size="lg" 
               className="bg-white text-ahoora-purple hover:bg-white/90 px-8"
-              onClick={() => setShowSignup(true)}
             >
               Watch Demo
             </Button>

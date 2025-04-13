@@ -1,14 +1,13 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send, MessageCircle } from "lucide-react";
 
 const sampleQuestions = [
-  "How can I improve our customer retention?",
-  "What are the current market trends in tech?",
-  "How do I optimize our supply chain?",
-  "Can you forecast our sales for next quarter?"
+  "How can I improve my Google Ads conversion rate?",
+  "What keywords are underperforming in my campaigns?",
+  "Why is my cost per click increasing this month?",
+  "How can I optimize my ad spend across campaigns?"
 ];
 
 const AskAhooraSection = () => {
@@ -38,7 +37,7 @@ const AskAhooraSection = () => {
             Ask Ahoora Anything
           </h2>
           <p className="text-lg text-gray-700">
-            Experience the power of Ahoora's AI by asking a business question. Our system analyzes data and provides insightful answers.
+            Experience the power of Ahoora's AI by asking questions about your Google Ads campaigns. Our system analyzes data and provides insightful answers.
           </p>
         </div>
 
@@ -49,7 +48,7 @@ const AskAhooraSection = () => {
                 <Input
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
-                  placeholder="Ask a business question..."
+                  placeholder="Ask a Google Ads question..."
                   className="flex-1 border-ahoora-purple/50 focus-visible:ring-ahoora-purple"
                   disabled={isSubmitted}
                 />
@@ -114,13 +113,13 @@ const AskAhooraSection = () => {
                     <div>
                       <p className="font-medium text-gray-900">Ahoora AI</p>
                       <div className="prose text-gray-700">
-                        <p>Based on my analysis of your data and industry trends, here are some actionable insights:</p>
+                        <p>Based on my analysis of your Google Ads data, here are some actionable insights:</p>
                         <ul className="list-disc pl-5 mt-2 space-y-1">
-                          <li>Key performance indicators show a 23% opportunity for growth in your sector</li>
-                          <li>Your competitors are investing heavily in automation technologies</li>
-                          <li>Customer feedback indicates a need for more personalized experiences</li>
+                          <li>Your campaigns in the northeast region are outperforming others by 27%</li>
+                          <li>Three of your keywords have declining click-through rates this month</li>
+                          <li>There's an opportunity to reduce CPC by adjusting your bidding strategy</li>
                         </ul>
-                        <p className="mt-2">Would you like me to generate a detailed report on this topic?</p>
+                        <p className="mt-2">Would you like me to generate a detailed optimization report?</p>
                       </div>
                     </div>
                   </div>
@@ -133,7 +132,7 @@ const AskAhooraSection = () => {
             <div className="bg-gray-50 border-t border-gray-100 p-4 text-center">
               <p className="text-gray-700 mb-2">Ready to experience the full power of Ahoora?</p>
               <Button className="bg-ahoora-purple hover:bg-ahoora-purple-dark">
-                Start Your Free Trial
+                Watch Demo
               </Button>
             </div>
           )}

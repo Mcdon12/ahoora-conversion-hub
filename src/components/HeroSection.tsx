@@ -22,7 +22,6 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 className="bg-ahoora-purple hover:bg-ahoora-purple-dark text-white px-8 py-6 text-lg"
-                onClick={() => setShowSignup(true)}
               >
                 Watch Demo
               </Button>

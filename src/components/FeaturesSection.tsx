@@ -1,4 +1,3 @@
-
 import { BrainCircuit, CloudLightning, Shield, Layers, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -63,7 +62,6 @@ const FeaturesSection = () => {
             </div>
             <Button 
               className="bg-ahoora-purple hover:bg-ahoora-purple-dark text-white px-8 whitespace-nowrap"
-              onClick={() => setShowSignup(true)}
             >
               Watch Demo <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
