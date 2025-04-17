@@ -39,12 +39,11 @@ const HeroSection = () => {
           </div>
           <div className="flex-1 w-full max-w-xl">
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-ahoora-purple to-ahoora-purple-light blur-lg opacity-30 rounded-lg"></div>
               <div className="relative bg-white shadow-xl rounded-lg overflow-hidden border border-gray-100">
                 <img
-                  src="https://www.ahoora.ai/static/media/cyber-bg.e1817f027d6ff6d09fc9.png"
-                  alt="Ahoora AI Dashboard"
-                  className="w-full h-auto"
+                  src="https://www.ahoora.ai/static/media/ahoora_metflow.07c613ecb98eaea112a6.png"
+                  alt="Ahoora AI Logo"
+                  className="w-full h-auto object-contain p-8"
                 />
               </div>
             </div>
@@ -57,3 +56,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
