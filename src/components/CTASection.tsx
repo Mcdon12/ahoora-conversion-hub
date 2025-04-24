@@ -1,14 +1,10 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { SignupModal } from "@/components/SignupModal";
-
 const CTASection = () => {
   const [showSignup, setShowSignup] = useState(false);
-
-  return (
-    <section id="contact" className="section-padding bg-ahoora-purple text-white">
+  return <section id="contact" className="section-padding bg-ahoora-purple text-white">
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -18,18 +14,10 @@ const CTASection = () => {
             Join search marketing professionals already using Ahoora's AI technology to optimize their PPC campaigns and drive better results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-white text-ahoora-purple hover:bg-white/90 px-8"
-            >
+            <Button size="lg" className="bg-white text-ahoora-purple hover:bg-white/90 px-8">
               Watch Demo
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="border-white text-white hover:bg-white/10 px-8"
-              onClick={() => setShowSignup(true)}
-            >
+            <Button variant="outline" size="lg" onClick={() => setShowSignup(true)} className="border-white text-white px-8 bg-[#6e59a5]">
               <span>Ask Ahoora</span>
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -40,8 +28,6 @@ const CTASection = () => {
         </div>
       </div>
       <SignupModal open={showSignup} onOpenChange={setShowSignup} />
-    </section>
-  );
+    </section>;
 };
-
 export default CTASection;
