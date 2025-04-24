@@ -41,8 +41,8 @@ const HeroSection = () => {
             <div className="relative">
               <div className="relative bg-white shadow-xl rounded-lg overflow-hidden border border-gray-100">
                 <img
-                  src="https://www.ahoora.ai/static/media/ahoora_metflow.07c613ecb98eaea112a6.png"
-                  alt="Ahoora AI Logo"
+                  src="/lovable-uploads/5bbf1aa6-01fe-4673-aff5-803220766e75.png"
+                  alt="AI and Human Collaboration"
                   className="w-full h-auto object-contain p-8"
                 />
               </div>
