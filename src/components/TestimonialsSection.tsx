@@ -1,36 +1,30 @@
-
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Testimonial data
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    position: "CTO at TechForward",
-    image: "https://randomuser.me/api/portraits/women/1.jpg",
-    quote: "Ahoora has completely transformed how we analyze our market data. The AI models are incredibly accurate and have helped us identify opportunities we would have otherwise missed.",
+    name: "Sam Lueng",
+    position: "VP, SEARCH & AD TECHNOLOGIES",
+    organization: "THE ABER GROUP",
+    image: "https://www.ahoora.ai/static/media/sam_l.0a454e126989d10c8557.jpg",
+    quote: "From a data privacy lens, Ahoora AI is doing something different from the typical approach to AI. Instead of absorbing all of the Google Ads data into their own platform, they're acting as a true midware that sits on top of Google Ads with a 0-data privacy model.",
     stars: 5
   },
   {
-    name: "Michael Chen",
-    position: "Data Science Director at GlobalCorp",
-    image: "https://randomuser.me/api/portraits/men/2.jpg",
-    quote: "The integration was seamless, and the results were immediate. Our decision-making process is now 70% faster, and our accuracy has improved by 35%. Ahoora is truly game-changing.",
+    name: "Emma Brito",
+    position: "DIGITAL ACTIVATION DIRECTOR",
+    organization: "JUNGLE MEDIA",
+    image: "https://www.ahoora.ai/static/media/emma_b.49e5b3e1b46764a917a1.jpg",
+    quote: "The amount of time spent pulling and formatting data to evaluate and report on campaign performance is the biggest pain point we have. While straightforward enough to pull, it can be time-consuming. With Ahoora AI, the WoW reporting is streamlined.",
     stars: 5
   },
   {
-    name: "Elena Rodriguez",
-    position: "Head of Innovation at NextWave",
-    image: "https://randomuser.me/api/portraits/women/3.jpg",
-    quote: "We've tried multiple AI solutions, but Ahoora stands out with its intuitive interface and powerful capabilities. It's not just a tool—it's like having an expert data scientist on your team 24/7.",
-    stars: 5
-  },
-  {
-    name: "David Washington",
-    position: "CEO at Stratosphere",
-    image: "https://randomuser.me/api/portraits/men/4.jpg",
-    quote: "Implementing Ahoora was one of the best business decisions we made last year. The ROI has been exceptional, and the customer support is world-class.",
+    name: "Isaac Uloko",
+    position: "Director of Measurement & Attribution",
+    organization: "ADM",
+    image: "https://www.ahoora.ai/static/media/isaac_u.fc197d8129223a7a98df.jpg",
+    quote: "The ability to use Ahoora AI to get insights quickly to guide strategies provides a high level of efficiency and productivity for search marketers. The user experience derived from its dynamic dashboard that provides insights and reports quickly in a conversational way is a game changer.",
     stars: 5
   }
 ];
@@ -40,7 +34,6 @@ const TestimonialsSection = () => {
   const [sliding, setSliding] = useState(false);
   const timerRef = useRef<number | null>(null);
 
-  // Auto-rotate testimonials
   useEffect(() => {
     timerRef.current = window.setInterval(() => {
       goToNext();
@@ -74,7 +67,6 @@ const TestimonialsSection = () => {
     setTimeout(() => setSliding(false), 500);
   };
 
-  // Pause auto-rotation on mouse hover
   const pauseAutoRotation = () => {
     if (timerRef.current) {
       clearInterval(timerRef.current);
@@ -82,7 +74,6 @@ const TestimonialsSection = () => {
     }
   };
 
-  // Resume auto-rotation on mouse leave
   const resumeAutoRotation = () => {
     if (!timerRef.current) {
       timerRef.current = window.setInterval(() => {
@@ -136,6 +127,7 @@ const TestimonialsSection = () => {
                         <div>
                           <h4 className="text-lg font-semibold text-gray-900">{testimonial.name}</h4>
                           <p className="text-gray-600">{testimonial.position}</p>
+                          <p className="text-gray-600">{testimonial.organization}</p>
                         </div>
                       </div>
                     </div>
@@ -145,7 +137,6 @@ const TestimonialsSection = () => {
             </div>
           </div>
 
-          {/* Navigation buttons */}
           <button 
             onClick={goToPrev}
             className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-50 focus:outline-none transition-colors z-10"
@@ -162,7 +153,6 @@ const TestimonialsSection = () => {
             <ChevronRight className="h-6 w-6 text-ahoora-purple" />
           </button>
 
-          {/* Indicators */}
           <div className="flex justify-center mt-8 space-x-2">
             {testimonials.map((_, index) => (
               <button

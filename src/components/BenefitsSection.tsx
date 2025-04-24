@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { useState } from "react";
@@ -50,15 +49,10 @@ const BenefitsSection = () => {
           <div className="flex-1 w-full max-w-xl">
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
               <img 
-                src="https://www.ahoora.ai/static/media/cyber-bg.e1817f027d6ff6d09fc9.png" 
-                alt="Ahoora AI Platform" 
+                src="/lovable-uploads/a2bb0d93-3fe8-4414-a709-d2d4bc1a5b90.png" 
+                alt="Ahoora AI Platform Interface" 
                 className="w-full h-auto"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ahoora-purple/50 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="text-xl font-semibold text-white mb-2">Powerful Insights</h3>
-                <p className="text-white/90">Ahoora translates complex Google Ads data into clear, actionable recommendations that drive better ROAS.</p>
-              </div>
             </div>
           </div>
         </div>
