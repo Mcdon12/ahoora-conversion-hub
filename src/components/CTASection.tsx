@@ -12,10 +12,10 @@ const CTASection = () => {
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Transform Your Google Ads Performance?
+            Ready to Transform Your Search Marketing Performance?
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Join paid search marketers already using Ahoora's AI technology to get actionable insights from their Google Ads data.
+            Join search marketing professionals already using Ahoora's AI technology to optimize their PPC campaigns and drive better results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
