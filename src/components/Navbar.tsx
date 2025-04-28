@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -26,6 +25,7 @@ const Navbar = () => {
           <a href="#features" className="text-gray-700 hover:text-ahoora-purple transition-colors">Features</a>
           <a href="#benefits" className="text-gray-700 hover:text-ahoora-purple transition-colors">Benefits</a>
           <a href="#testimonials" className="text-gray-700 hover:text-ahoora-purple transition-colors">Testimonials</a>
+          <a href="#faq" className="text-gray-700 hover:text-ahoora-purple transition-colors">FAQ</a>
           <a href="#contact" className="text-gray-700 hover:text-ahoora-purple transition-colors">Contact</a>
         </div>
 

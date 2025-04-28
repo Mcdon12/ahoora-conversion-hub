@@ -7,6 +7,7 @@ import BenefitsSection from "@/components/BenefitsSection";
 import TractionSection from "@/components/TractionSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AskAhooraSection from "@/components/AskAhooraSection";
+import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -46,6 +47,7 @@ const Index = () => {
         <TractionSection />
         <TestimonialsSection />
         <AskAhooraSection />
+        <FAQSection />
         <CTASection />
       </main>
       <Footer />
