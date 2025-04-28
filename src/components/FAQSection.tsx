@@ -31,9 +31,11 @@ const faqs = [
 ];
 
 const FAQSection = () => {
+  console.log("FAQ Section rendering");
+  
   return (
     <section className="section-padding bg-gradient-to-br from-white to-gray-50" id="faq">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
@@ -42,7 +44,7 @@ const FAQSection = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 mb-8">
               Find answers to common questions about Ahoora AI and how it can help optimize your Google Ads campaigns
             </p>
           </div>
@@ -50,7 +52,7 @@ const FAQSection = () => {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">
+                <AccordionTrigger className="text-left font-medium">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600">

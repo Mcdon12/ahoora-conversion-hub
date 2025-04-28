@@ -37,6 +37,11 @@ const Index = () => {
     };
   }, []);
 
+  // Add console log to verify all sections are being rendered
+  useEffect(() => {
+    console.log("Sections rendering check - FAQ section should appear");
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
