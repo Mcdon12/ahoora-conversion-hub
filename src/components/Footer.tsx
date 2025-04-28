@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 const Footer = () => {
   return <footer className="bg-gray-50 border-t border-gray-200">
       <div className="container mx-auto py-12 px-4">
@@ -51,17 +52,31 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} Ahoora AI. All rights reserved.
-          </p>
-          <div className="mt-4 md:mt-0 flex space-x-6">
-            <a href="#" className="text-sm text-gray-500 hover:text-ahoora-purple transition-colors">Privacy Policy</a>
-            <a href="#" className="text-sm text-gray-500 hover:text-ahoora-purple transition-colors">Terms of Service</a>
-            <a href="#" className="text-sm text-gray-500 hover:text-ahoora-purple transition-colors">Cookie Policy</a>
+        <div className="mt-12 pt-8 border-t border-gray-200">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-4">
+              <p className="text-gray-500 text-sm">
+                &copy; {new Date().getFullYear()} Ahoora AI. All rights reserved.
+              </p>
+              <div className="h-8 border-l border-gray-300" />
+              <div className="flex items-center gap-2">
+                <img 
+                  src="https://www.gstatic.com/images/icons/material/product/2x/googleg_16dp.png" 
+                  alt="Google Logo" 
+                  className="h-4 w-4"
+                />
+                <span className="text-sm text-gray-600">Verified by Google</span>
+              </div>
+            </div>
+            <div className="flex space-x-6">
+              <a href="#" className="text-sm text-gray-500 hover:text-ahoora-purple transition-colors">Privacy Policy</a>
+              <a href="#" className="text-sm text-gray-500 hover:text-ahoora-purple transition-colors">Terms of Service</a>
+              <a href="#" className="text-sm text-gray-500 hover:text-ahoora-purple transition-colors">Cookie Policy</a>
+            </div>
           </div>
         </div>
       </div>
     </footer>;
 };
+
 export default Footer;
