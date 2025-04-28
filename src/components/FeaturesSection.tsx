@@ -43,7 +43,7 @@ const FeaturesSection = () => {
         <div className="mt-16 bg-gradient-to-r from-ahoora-purple/10 to-ahoora-purple-light/10 p-8 rounded-2xl">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to optimize your Google Ads campaigns?</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">See how marketers like you are optimizing thier search campaigns!</h3>
               <p className="text-gray-700 mb-0">Join paid search marketers already using Ahoora's AI to get more from their ad spend.</p>
             </div>
             <Button className="bg-ahoora-purple hover:bg-ahoora-purple-dark text-white px-8 whitespace-nowrap">
