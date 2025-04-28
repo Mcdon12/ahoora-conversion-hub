@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
@@ -39,11 +38,11 @@ const HeroSection = () => {
           </div>
           <div className="flex-1 w-full max-w-xl">
             <div className="relative">
-              <div className="relative bg-white shadow-xl rounded-lg overflow-hidden border border-gray-100">
+              <div className="relative bg-white shadow-2xl rounded-lg overflow-hidden border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                 <img
                   src="/lovable-uploads/5bbf1aa6-01fe-4673-aff5-803220766e75.png"
                   alt="AI and Human Collaboration"
-                  className="w-full h-auto object-contain p-8"
+                  className="w-full h-auto object-contain p-4 hover:opacity-95 transition-opacity"
                 />
               </div>
             </div>
