@@ -7,6 +7,16 @@ import { SignupModal } from "@/components/SignupModal";
 const CTASection = () => {
   const [showSignup, setShowSignup] = useState(false);
   
+  const handleAskAhoora = () => {
+    setShowSignup(true);
+    // Track event in Google Tag Manager
+    window.dataLayer?.push({
+      event: 'cta_click',
+      cta_text: 'Ask Ahoora',
+      cta_location: 'cta_section'
+    });
+  };
+
   return (
     <section id="contact" className="section-padding bg-ahoora-purple text-white">
       <div className="container mx-auto">
@@ -21,7 +31,7 @@ const CTASection = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              onClick={() => setShowSignup(true)} 
+              onClick={handleAskAhoora} 
               className="border-white text-white px-8 bg-[#6e59a5] hover:bg-[#5d4a8e]"
             >
               <span>Ask Ahoora</span>

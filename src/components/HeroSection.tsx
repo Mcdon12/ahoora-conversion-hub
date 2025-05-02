@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
@@ -5,6 +6,16 @@ import { SignupModal } from "@/components/SignupModal";
 
 const HeroSection = () => {
   const [showSignup, setShowSignup] = useState(false);
+
+  const handleAskAhoora = () => {
+    setShowSignup(true);
+    // Track event in Google Tag Manager
+    window.dataLayer?.push({
+      event: 'cta_click',
+      cta_text: 'Ask Ahoora',
+      cta_location: 'hero_section'
+    });
+  };
 
   return (
     <section className="pt-32 pb-16 hero-gradient">
@@ -19,25 +30,19 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                size="lg" 
-                className="bg-ahoora-purple hover:bg-ahoora-purple-dark text-white px-8 py-6 text-lg"
-              >
-                Watch Demo
-              </Button>
-              <Button 
                 variant="outline" 
                 size="lg" 
                 className="border-ahoora-purple text-ahoora-purple hover:bg-ahoora-purple/10 px-8 py-6 text-lg"
-                onClick={() => setShowSignup(true)}
+                onClick={handleAskAhoora}
               >
                 <span>Ask Ahoora</span>
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
-            <p className="text-sm text-gray-500 mt-4">No credit card required. Get insights instantly.</p>
+            <p className="text-sm text-gray-500 mt-4">Enterprise grade security</p>
           </div>
-          <div className="flex-1 w-full max-w-xl">
-            <div className="relative">
+          <div className="flex-1 w-full max-w-xl lg:max-w-none">
+            <div className="relative h-full">
               <div className="relative bg-white shadow-2xl rounded-lg overflow-hidden border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                 <img
                   src="/lovable-uploads/5bbf1aa6-01fe-4673-aff5-803220766e75.png"

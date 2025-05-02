@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -46,8 +47,8 @@ const Navbar = () => {
         </div>
       </div>
       
-      <LoginModal open={showLogin} onOpenChange={setShowLogin} />
-      <SignupModal open={showSignup} onOpenChange={setShowSignup} />
+      <LoginModal open={showLogin} onOpenChange={setShowLogin} setShowSignup={setShowSignup} />
+      <SignupModal open={showSignup} onOpenChange={setShowSignup} setShowLogin={setShowLogin} />
     </nav>
   );
 };

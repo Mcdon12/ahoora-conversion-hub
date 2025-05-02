@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -9,17 +10,41 @@ import { ForgotPasswordModal } from "./ForgotPasswordModal";
 interface LoginModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  setShowSignup?: (show: boolean) => void;
 }
 
-export function LoginModal({ open, onOpenChange }: LoginModalProps) {
+export function LoginModal({ open, onOpenChange, setShowSignup }: LoginModalProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle login logic here
-    console.log("Login submitted");
+    console.log("Login submitted", formData);
+
+    // Track login event in GTM
+    window.dataLayer?.push({
+      event: 'login_success',
+      user_email_domain: formData.email.split('@')[1] || 'unknown'
+    });
+    
     onOpenChange(false);
+  };
+
+  const switchToSignup = () => {
+    onOpenChange(false);
+    if (setShowSignup) {
+      setTimeout(() => setShowSignup(true), 100);
+    }
   };
 
   return (
@@ -35,7 +60,14 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="you@company.com" required />
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="you@company.com" 
+                required 
+                value={formData.email}
+                onChange={handleInputChange}
+              />
             </div>
             
             <div className="space-y-2">
@@ -46,6 +78,8 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
                   type={showPassword ? "text" : "password"} 
                   placeholder="Enter your password" 
                   required 
+                  value={formData.password}
+                  onChange={handleInputChange}
                 />
                 <button 
                   type="button"
@@ -71,7 +105,16 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
               </button>
             </div>
             
-            <Button type="submit" className="w-full bg-ahoora-purple hover:bg-ahoora-purple/90">
+            <Button 
+              type="submit" 
+              className="w-full bg-ahoora-purple hover:bg-ahoora-purple/90"
+              onClick={() => {
+                window.dataLayer?.push({
+                  event: 'form_submit',
+                  form_name: 'login'
+                });
+              }}
+            >
               Login
             </Button>
             
@@ -79,10 +122,7 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
               <p>Don't have an account? <button 
                 type="button" 
                 className="text-ahoora-purple hover:underline"
-                onClick={() => {
-                  onOpenChange(false);
-                  // Open signup modal through parent component
-                }}
+                onClick={switchToSignup}
               >
                 Sign up
               </button></p>
