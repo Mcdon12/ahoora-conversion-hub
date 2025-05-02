@@ -3,6 +3,7 @@ import { BrainCircuit, CloudLightning, Shield, Layers, ChevronRight } from "luci
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { SignupModal } from "@/components/SignupModal";
+import { pushGTMEvent } from "@/types/gtm";
 
 // Reordered features with Data Privacy first
 const features = [{
@@ -26,6 +27,15 @@ const features = [{
 const FeaturesSection = () => {
   const [showSignup, setShowSignup] = useState(false);
   
+  const handleLearnMore = () => {
+    setShowSignup(true);
+    pushGTMEvent({
+      event: 'cta_click',
+      cta_text: 'Learn More',
+      cta_location: 'features_section'
+    });
+  };
+
   return <section id="features" className="section-padding bg-white">
       <div className="container mx-auto">
         <div className="text-center mb-16">
@@ -53,7 +63,7 @@ const FeaturesSection = () => {
             </div>
             <Button 
               className="bg-ahoora-purple hover:bg-ahoora-purple-dark text-white px-8 whitespace-nowrap"
-              onClick={() => setShowSignup(true)}
+              onClick={handleLearnMore}
             >
               Learn More <ChevronRight className="ml-2 h-4 w-4" />
             </Button>

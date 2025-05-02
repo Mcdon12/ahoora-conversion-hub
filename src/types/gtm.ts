@@ -32,6 +32,7 @@ export interface LoginSuccessEvent extends GTMEvent {
 export interface FormSubmitEvent extends GTMEvent {
   event: 'form_submit';
   form_name: string;
+  question_text?: string;
 }
 
 export interface SocialClickEvent extends GTMEvent {
@@ -45,11 +46,14 @@ export interface PageViewEvent extends GTMEvent {
   page_path: string;
 }
 
+export interface SampleQuestionEvent extends GTMEvent {
+  event: 'sample_question_click';
+  question_text: string;
+}
+
 // Helper function to push events to dataLayer
 export const pushGTMEvent = (event: GTMEvent): void => {
   if (window.dataLayer) {
     window.dataLayer.push(event);
-  } else {
-    console.warn('GTM dataLayer not available');
   }
 };

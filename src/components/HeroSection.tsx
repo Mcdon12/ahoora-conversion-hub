@@ -1,8 +1,9 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Shield } from "lucide-react";
 import { useState } from "react";
 import { SignupModal } from "@/components/SignupModal";
+import { pushGTMEvent } from "@/types/gtm";
 
 const HeroSection = () => {
   const [showSignup, setShowSignup] = useState(false);
@@ -10,7 +11,7 @@ const HeroSection = () => {
   const handleAskAhoora = () => {
     setShowSignup(true);
     // Track event in Google Tag Manager
-    window.dataLayer?.push({
+    pushGTMEvent({
       event: 'cta_click',
       cta_text: 'Ask Ahoora',
       cta_location: 'hero_section'
@@ -39,15 +40,18 @@ const HeroSection = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
-            <p className="text-sm text-gray-500 mt-4">Enterprise grade security</p>
+            <div className="flex items-center gap-2 mt-6">
+              <Shield className="h-5 w-5 text-ahoora-purple" />
+              <p className="text-sm text-gray-600">Enterprise-grade security with end-to-end data protection</p>
+            </div>
           </div>
-          <div className="flex-1 w-full max-w-xl lg:max-w-none">
-            <div className="relative h-full">
-              <div className="relative bg-white shadow-2xl rounded-lg overflow-hidden border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+          <div className="flex-1 w-full max-w-none lg:max-w-none">
+            <div className="relative h-full flex items-center justify-center">
+              <div className="w-full bg-white shadow-2xl rounded-lg overflow-hidden border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                 <img
                   src="/lovable-uploads/5bbf1aa6-01fe-4673-aff5-803220766e75.png"
                   alt="AI and Human Collaboration"
-                  className="w-full h-auto object-contain p-4 hover:opacity-95 transition-opacity"
+                  className="w-full h-auto object-contain hover:opacity-95 transition-opacity"
                 />
               </div>
             </div>

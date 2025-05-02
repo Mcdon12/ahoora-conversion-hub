@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { SignupModal } from "@/components/SignupModal";
+import { pushGTMEvent } from "@/types/gtm";
 
 const CTASection = () => {
   const [showSignup, setShowSignup] = useState(false);
@@ -10,7 +11,7 @@ const CTASection = () => {
   const handleAskAhoora = () => {
     setShowSignup(true);
     // Track event in Google Tag Manager
-    window.dataLayer?.push({
+    pushGTMEvent({
       event: 'cta_click',
       cta_text: 'Ask Ahoora',
       cta_location: 'cta_section'

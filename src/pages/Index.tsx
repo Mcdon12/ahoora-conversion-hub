@@ -10,6 +10,7 @@ import AskAhooraSection from "@/components/AskAhooraSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import { pushGTMEvent } from "@/types/gtm";
 
 const Index = () => {
   // Smooth scroll to sections
@@ -31,15 +32,17 @@ const Index = () => {
 
     // Add event listener for hash changes
     window.addEventListener("hashchange", handleHashChange);
+    
+    // Track page view
+    pushGTMEvent({
+      event: 'page_view',
+      page_title: 'Home Page',
+      page_path: '/'
+    });
 
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
     };
-  }, []);
-
-  // Add console log to verify all sections are being rendered
-  useEffect(() => {
-    console.log("Sections rendering check - FAQ section should appear");
   }, []);
 
   return (

@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
             <img 
-              src="https://www.ahoora.ai/static/media/ahoora_metflow.07c613ecb98eaea112a6.png" 
+              src="/lovable-uploads/06407a7a-8832-46d4-84ce-a9eb08e6c43e.png" 
               alt="Ahoora Logo" 
               className="h-10"
             />
@@ -27,7 +27,6 @@ const Navbar = () => {
           <a href="#benefits" className="text-gray-700 hover:text-ahoora-purple transition-colors">Benefits</a>
           <a href="#testimonials" className="text-gray-700 hover:text-ahoora-purple transition-colors">Testimonials</a>
           <a href="#faq" className="text-gray-700 hover:text-ahoora-purple transition-colors">FAQ</a>
-          <a href="#contact" className="text-gray-700 hover:text-ahoora-purple transition-colors">Contact</a>
         </div>
 
         <div className="flex items-center space-x-4">

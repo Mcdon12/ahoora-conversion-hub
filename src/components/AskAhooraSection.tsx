@@ -2,9 +2,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Send, MessageCircle } from "lucide-react";
+import { Send } from "lucide-react";
 import { SignupModal } from "@/components/SignupModal";
 import { LoginModal } from "@/components/LoginModal";
+import { pushGTMEvent } from "@/types/gtm";
 
 const sampleQuestions = [
   "How can I improve my Google Ads conversion rate?",
@@ -22,11 +23,20 @@ const AskAhooraSection = () => {
     e.preventDefault();
     if (question.trim()) {
       setShowSignup(true);
+      pushGTMEvent({
+        event: 'form_submit',
+        form_name: 'ask_ahoora',
+        question_text: question
+      });
     }
   };
 
   const handleSampleClick = (q: string) => {
     setQuestion(q);
+    pushGTMEvent({
+      event: 'sample_question_click',
+      question_text: q
+    });
   };
 
   return (

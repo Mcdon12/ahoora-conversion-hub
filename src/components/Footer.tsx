@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="flex flex-col items-center md:items-start">
             <Link to="/" className="inline-block mb-4">
-              <img src="https://www.ahoora.ai/static/media/ahoora_metflow.07c613ecb98eaea112a6.png" alt="Ahoora Logo" className="h-12" />
+              <img src="/lovable-uploads/06407a7a-8832-46d4-84ce-a9eb08e6c43e.png" alt="Ahoora Logo" className="h-12" />
             </Link>
             <p className="text-gray-600 text-center md:text-left mb-4">
               Ahoora helps marketers make better decisions with AI-powered insights from their search marketing data while prioritizing data privacy and security.
@@ -55,16 +55,14 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-end">
             <div className="flex items-center gap-4 mb-4">
               <img 
-                src="https://www.gstatic.com/images/icons/material/product/2x/googleg_16dp.png" 
+                src="/lovable-uploads/08575996-12e2-4b28-853e-23fec3a61175.png" 
                 alt="Google Logo" 
-                className="h-5 w-5"
+                className="h-8 w-8"
               />
               <span className="text-sm font-medium text-gray-700">Verified by Google</span>
             </div>
             <div className="flex flex-col md:flex-row gap-6 mt-4">
               <Link to="/privacy-policy" className="text-sm text-gray-500 hover:text-ahoora-purple transition-colors">Privacy Policy</Link>
-              <a href="#" className="text-sm text-gray-500 hover:text-ahoora-purple transition-colors">Terms of Service</a>
-              <a href="#contact" className="text-sm text-gray-500 hover:text-ahoora-purple transition-colors">Contact Us</a>
             </div>
           </div>
         </div>

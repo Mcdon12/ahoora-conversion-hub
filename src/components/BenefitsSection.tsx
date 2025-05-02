@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { useState } from "react";
 import { SignupModal } from "@/components/SignupModal";
+import { pushGTMEvent } from "@/types/gtm";
 
 const benefits = [
   "Get actionable insights from your Google Ads data",
@@ -15,6 +16,15 @@ const benefits = [
 
 const BenefitsSection = () => {
   const [showSignup, setShowSignup] = useState(false);
+  
+  const handleSignupClick = () => {
+    setShowSignup(true);
+    pushGTMEvent({
+      event: 'cta_click',
+      cta_text: 'Ask Ahoora',
+      cta_location: 'benefits_section'
+    });
+  };
 
   return (
     <section id="benefits" className="relative section-padding overflow-hidden bg-gray-50">
@@ -41,7 +51,7 @@ const BenefitsSection = () => {
             
             <Button 
               className="bg-ahoora-purple hover:bg-ahoora-purple-dark text-white px-8"
-              onClick={() => setShowSignup(true)}
+              onClick={handleSignupClick}
             >
               Ask Ahoora
             </Button>
@@ -50,8 +60,8 @@ const BenefitsSection = () => {
           <div className="flex-1 w-full max-w-xl">
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
               <img 
-                src="https://www.ahoora.ai/static/media/ahoora_metflow.07c613ecb98eaea112a6.png" 
-                alt="Ahoora AI Platform Interface" 
+                src="/lovable-uploads/45c8269b-50e2-428c-85d3-47a3c76bb4e4.png" 
+                alt="Ahoora AI Google Ads Integration" 
                 className="w-full h-auto"
               />
             </div>
