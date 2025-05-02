@@ -8,8 +8,8 @@ const benefits = [
   "Get actionable insights from your Google Ads data",
   "Optimize campaign performance through AI-powered recommendations",
   "Save hours of analysis time with instant answers",
+  "Your data remains private - we never store your sensitive information",
   "Identify underperforming keywords and ads",
-  "Discover new optimization opportunities",
   "Make data-driven decisions without being a data scientist"
 ];
 
@@ -43,7 +43,7 @@ const BenefitsSection = () => {
               className="bg-ahoora-purple hover:bg-ahoora-purple-dark text-white px-8"
               onClick={() => setShowSignup(true)}
             >
-              Watch Demo
+              Ask Ahoora
             </Button>
           </div>
           

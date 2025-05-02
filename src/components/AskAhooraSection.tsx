@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -47,7 +48,7 @@ const AskAhooraSection = () => {
                 <Input
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
-                  placeholder="Ask a Google Ads question..."
+                  placeholder="Ask Ahoora..."
                   className="flex-1 border-ahoora-purple/50 focus-visible:ring-ahoora-purple"
                 />
                 <Button 
