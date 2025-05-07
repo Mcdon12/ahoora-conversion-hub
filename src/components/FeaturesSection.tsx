@@ -1,4 +1,3 @@
-
 import { BrainCircuit, CloudLightning, Shield, Layers, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -23,10 +22,8 @@ const features = [{
   title: "Real-time Analysis",
   description: "Process and analyze your Google Ads data in real-time to make informed decisions when they matter most."
 }];
-
 const FeaturesSection = () => {
   const [showSignup, setShowSignup] = useState(false);
-  
   const handleLearnMore = () => {
     setShowSignup(true);
     pushGTMEvent({
@@ -35,13 +32,10 @@ const FeaturesSection = () => {
       cta_location: 'features_section'
     });
   };
-
   return <section id="features" className="section-padding bg-white">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Your AI-Powered Google Ads Assistant
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Your AI-Powered Google Ads Agent</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             Ahoora sits between your Google Ads data and your marketing team, providing instant insights and answering complex questions to help you optimize campaigns.
           </p>
@@ -61,10 +55,7 @@ const FeaturesSection = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">See how marketers like you are optimizing their search campaigns!</h3>
               <p className="text-gray-700 mb-0">Join paid search marketers already using Ahoora's AI to get more from their ad spend.</p>
             </div>
-            <Button 
-              className="bg-ahoora-purple hover:bg-ahoora-purple-dark text-white px-8 whitespace-nowrap"
-              onClick={handleLearnMore}
-            >
+            <Button className="bg-ahoora-purple hover:bg-ahoora-purple-dark text-white px-8 whitespace-nowrap" onClick={handleLearnMore}>
               Learn More <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
@@ -73,5 +64,4 @@ const FeaturesSection = () => {
       <SignupModal open={showSignup} onOpenChange={setShowSignup} />
     </section>;
 };
-
 export default FeaturesSection;
