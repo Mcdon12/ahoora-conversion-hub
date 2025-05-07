@@ -60,7 +60,7 @@ const BenefitsSection = () => {
           <div className="flex-1 w-full max-w-xl">
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
               <img 
-                src="/lovable-uploads/a2bb0d93-3fe8-4414-a709-d2d4bc1a5b90.png" 
+                src="/lovable-uploads/45c8269b-50e2-428c-85d3-47a3c76bb4e4.png" 
                 alt="Ahoora AI Google Ads Integration" 
                 className="w-full h-auto"
               />

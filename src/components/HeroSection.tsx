@@ -27,7 +27,7 @@ const HeroSection = () => {
               <span className="text-ahoora-purple">AI-Powered</span> Search Marketing Intelligence
             </h1>
             <p className="text-lg md:text-xl text-gray-700 mb-8">
-              Ahoora is your intelligent PPC agent, helping search marketers make data-driven decisions and optimize campaign performance with actionable insights.
+              Ahoora is your intelligent PPC assistant, helping search marketers make data-driven decisions and optimize campaign performance with actionable insights.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
