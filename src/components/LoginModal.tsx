@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,7 @@ interface LoginModalProps {
 }
 
 export function LoginModal({ open, onOpenChange, setShowSignup }: LoginModalProps) {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -38,6 +40,11 @@ export function LoginModal({ open, onOpenChange, setShowSignup }: LoginModalProp
     });
     
     onOpenChange(false);
+    
+    // Navigate to dashboard after successful login
+    setTimeout(() => {
+      navigate('/dashboard');
+    }, 100);
   };
 
   const switchToSignup = () => {

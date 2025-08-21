@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface SignupModalProps {
   open: boolean;
@@ -16,6 +17,7 @@ export function SignupModal({
   onOpenChange,
   setShowLogin
 }: SignupModalProps) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -41,6 +43,11 @@ export function SignupModal({
     });
     
     onOpenChange(false);
+    
+    // Navigate to dashboard after successful signup
+    setTimeout(() => {
+      navigate('/dashboard');
+    }, 100);
   };
 
   const switchToLogin = () => {
