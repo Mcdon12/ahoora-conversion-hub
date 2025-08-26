@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import samLuengImage from "@/assets/sam-lueng.jpg";
+import emmaBritoImage from "@/assets/emma-brito.jpg";
+import isaacUlokoImage from "@/assets/isaac-uloko.jpg";
 
 const testimonials = [
   {
     name: "Sam Lueng",
     position: "VP, SEARCH & AD TECHNOLOGIES",
     organization: "THE ABER GROUP",
-    image: "https://www.ahoora.ai/static/media/sam_l.0a454e126989d10c8557.jpg",
+    image: samLuengImage,
     quote: "From a data privacy lens, Ahoora AI is doing something different from the typical approach to AI. Instead of absorbing all of the Google Ads data into their own platform, they're acting as a true midware that sits on top of Google Ads with a 0-data privacy model.",
     stars: 5
   },
@@ -14,7 +17,7 @@ const testimonials = [
     name: "Emma Brito",
     position: "DIGITAL ACTIVATION DIRECTOR",
     organization: "JUNGLE MEDIA",
-    image: "https://www.ahoora.ai/static/media/emma_b.49e5b3e1b46764a917a1.jpg",
+    image: emmaBritoImage,
     quote: "The amount of time spent pulling and formatting data to evaluate and report on campaign performance is the biggest pain point we have. While straightforward enough to pull, it can be time-consuming. With Ahoora AI, the WoW reporting is streamlined.",
     stars: 5
   },
@@ -22,7 +25,7 @@ const testimonials = [
     name: "Isaac Uloko",
     position: "Director of Measurement & Attribution",
     organization: "ADM",
-    image: "https://www.ahoora.ai/static/media/isaac_u.fc197d8129223a7a98df.jpg",
+    image: isaacUlokoImage,
     quote: "The ability to use Ahoora AI to get insights quickly to guide strategies provides a high level of efficiency and productivity for search marketers. The user experience derived from its dynamic dashboard that provides insights and reports quickly in a conversational way is a game changer.",
     stars: 5
   }
