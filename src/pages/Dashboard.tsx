@@ -14,9 +14,11 @@ import { ChatSidebar } from "@/components/ChatSidebar";
 import { ChatInterface } from "@/components/ChatInterface";
 import { AccountSelector } from "@/components/AccountSelector";
 import { mockData, sampleQuestions } from "@/data/mockData";
-import { ChatSession, ChatMessage, MCCAccount, GoogleAdsAccount } from "@/types/dashboard";
+import { ChatSession, ChatMessage, MCCAccount, GoogleAdsAccount, ChartData } from "@/types/dashboard";
 import { pushGTMEvent } from "@/types/gtm";
 import { cn } from "@/lib/utils";
+import { DateRange } from "react-day-picker";
+import { format } from "date-fns";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -87,7 +89,69 @@ const Dashboard = () => {
     });
   };
 
-  const generateMockResponse = (userMessage: string, account?: GoogleAdsAccount): string => {
+  const generateMockChartData = (message: string, account?: GoogleAdsAccount, dateRange?: DateRange): ChartData | undefined => {
+    const lowerMessage = message.toLowerCase();
+    
+    // Generate chart data based on keywords in the message
+    if (lowerMessage.includes('performance') || lowerMessage.includes('trend') || lowerMessage.includes('chart')) {
+      const days = 30;
+      const data = Array.from({ length: days }, (_, i) => ({
+        date: format(new Date(Date.now() - (days - i) * 24 * 60 * 60 * 1000), 'MMM dd'),
+        clicks: Math.floor(Math.random() * 1000) + 500,
+        impressions: Math.floor(Math.random() * 10000) + 5000,
+        conversions: Math.floor(Math.random() * 50) + 10,
+        cost: Math.floor(Math.random() * 500) + 200
+      }));
+
+      if (lowerMessage.includes('comparison') || lowerMessage.includes('compare')) {
+        return {
+          type: "bar",
+          data: [
+            { name: 'Clicks', current: 8420, previous: 7230 },
+            { name: 'Impressions', current: 45200, previous: 38900 },
+            { name: 'Conversions', current: 320, previous: 280 },
+            { name: 'Cost', current: 12500, previous: 11200 }
+          ],
+          config: {
+            current: { label: 'Current Period', color: 'hsl(var(--primary))' },
+            previous: { label: 'Previous Period', color: '#9b87f5' }
+          },
+          title: `${account?.name || 'Campaign'} Performance Comparison`,
+          xAxisKey: 'name'
+        };
+      }
+
+      return {
+        type: "line",
+        data,
+        config: {
+          clicks: { label: 'Clicks', color: 'hsl(var(--primary))' },
+          conversions: { label: 'Conversions', color: '#9b87f5' }
+        },
+        title: `${account?.name || 'Campaign'} Performance Trend`,
+        xAxisKey: 'date'
+      };
+    }
+
+    if (lowerMessage.includes('budget') || lowerMessage.includes('spend')) {
+      return {
+        type: "pie",
+        data: [
+          { name: 'Search Campaigns', value: 45, fill: 'hsl(var(--primary))' },
+          { name: 'Display Campaigns', value: 30, fill: '#9b87f5' },
+          { name: 'Shopping Campaigns', value: 15, fill: '#6E59A5' },
+          { name: 'Video Campaigns', value: 10, fill: '#0EA5E9' }
+        ],
+        config: {},
+        title: `${account?.name || 'Account'} Budget Distribution`,
+        yAxisKey: 'value'
+      };
+    }
+
+    return undefined;
+  };
+
+  const generateMockResponse = (userMessage: string, account?: GoogleAdsAccount, dateRange?: DateRange): string => {
     const responses = [
       `Great question about ${account?.name || 'your account'}! Based on the recent performance data, I can see some interesting trends...`,
       `Here's what I found for ${account?.name || 'your campaigns'}: Your campaigns are showing strong performance in several key areas...`,
@@ -95,8 +159,12 @@ const Dashboard = () => {
       `For ${account?.name || 'your account'}, I recommend focusing on these key areas to maximize performance...`
     ];
     
+    const dateRangeText = dateRange?.from && dateRange?.to 
+      ? `for the period from ${format(dateRange.from, 'MMM dd')} to ${format(dateRange.to, 'MMM dd, yyyy')}`
+      : '';
+    
     return responses[Math.floor(Math.random() * responses.length)] + 
-      `\n\n📊 **Key Insights:**\n• Click-through rate is trending upward\n• Cost per conversion has decreased by 12%\n• Top performing keywords are driving quality traffic\n\n💡 **Recommendation:** Consider increasing budget for your best performing ad groups.\n\nWould you like me to dive deeper into any specific metrics?`;
+      ` ${dateRangeText}\n\n📊 **Key Insights:**\n• Click-through rate is trending upward\n• Cost per conversion has decreased by 12%\n• Top performing keywords are driving quality traffic\n\n💡 **Recommendation:** Consider increasing budget for your best performing ad groups.\n\nWould you like me to dive deeper into any specific metrics?`;
   };
 
   const handleSendMessage = async (message: string, chatSession?: ChatSession) => {
@@ -144,12 +212,14 @@ const Dashboard = () => {
 
     // Simulate AI response delay
     setTimeout(() => {
+      const chartData = generateMockChartData(message, selectedAccount, updatedChat?.dateRange);
       const aiResponse: ChatMessage = {
         id: `msg-${Date.now() + 1}`,
-        content: generateMockResponse(message, selectedAccount),
+        content: generateMockResponse(message, selectedAccount, updatedChat?.dateRange),
         sender: 'agent',
         timestamp: new Date(),
-        accountContext: selectedAccount.name
+        accountContext: selectedAccount.name,
+        chart: chartData
       };
 
       const finalMessages = [...updatedMessages, aiResponse];
@@ -180,6 +250,36 @@ const Dashboard = () => {
       page: 'dashboard'
     });
     navigate('/');
+  };
+
+  const handleDateRangeChange = (range: DateRange | undefined, chatSession?: ChatSession) => {
+    if (!chatSession || !selectedAccount) return;
+
+    // Add system message about date range change
+    const systemMessage: ChatMessage = {
+      id: `msg-${Date.now()}`,
+      content: range?.from && range?.to 
+        ? `📅 Updated analysis period to ${format(range.from, 'MMM dd')} - ${format(range.to, 'MMM dd, yyyy')}`
+        : '📅 Date range cleared',
+      sender: 'system',
+      timestamp: new Date()
+    };
+
+    const updatedMessages = [...(chatSession.messages || []), systemMessage];
+    const updatedChat = { 
+      ...chatSession, 
+      messages: updatedMessages,
+      dateRange: range ? { from: range.from!, to: range.to! } : undefined
+    };
+    
+    setCurrentChat(updatedChat);
+    setChatHistory(prev => ({
+      ...prev,
+      [selectedAccount.id]: [
+        updatedChat,
+        ...(prev[selectedAccount.id] || []).filter(chat => chat.id !== updatedChat.id)
+      ]
+    }));
   };
 
   return (
@@ -254,6 +354,7 @@ const Dashboard = () => {
             currentChat={currentChat}
             selectedAccount={selectedAccount}
             onSendMessage={handleSendMessage}
+            onDateRangeChange={handleDateRangeChange}
             isTyping={isTyping}
           />
         </div>

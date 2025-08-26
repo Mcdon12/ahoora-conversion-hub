@@ -10,12 +10,22 @@ export interface MCCAccount {
   childAccounts: GoogleAdsAccount[];
 }
 
+export interface ChartData {
+  type: "line" | "area" | "bar" | "pie";
+  data: any[];
+  config: Record<string, { label: string; color: string }>;
+  title?: string;
+  xAxisKey?: string;
+  yAxisKey?: string;
+}
+
 export interface ChatMessage {
   id: string;
   content: string;
   sender: 'user' | 'agent' | 'system';
   timestamp: Date;
   accountContext?: string;
+  chart?: ChartData;
 }
 
 export interface ChatSession {
@@ -26,6 +36,10 @@ export interface ChatSession {
   lastMessage: string;
   timestamp: string;
   messages: ChatMessage[];
+  dateRange?: {
+    from: Date;
+    to: Date;
+  };
 }
 
 export interface MockData {

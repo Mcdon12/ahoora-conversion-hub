@@ -3,14 +3,17 @@ import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { MessageSquareText, Settings, Sparkles } from "lucide-react";
 import { ChatMessage as ChatMessageType, ChatSession, GoogleAdsAccount } from "@/types/dashboard";
 import { sampleQuestions } from "@/data/mockData";
+import { DateRange } from "react-day-picker";
 
 interface ChatInterfaceProps {
   currentChat?: ChatSession;
   selectedAccount?: GoogleAdsAccount;
   onSendMessage: (message: string, chatSession?: ChatSession) => void;
+  onDateRangeChange?: (range: DateRange | undefined, chatSession?: ChatSession) => void;
   isTyping?: boolean;
 }
 
@@ -18,10 +21,18 @@ export function ChatInterface({
   currentChat, 
   selectedAccount, 
   onSendMessage,
+  onDateRangeChange,
   isTyping = false 
 }: ChatInterfaceProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
+  const [dateRange, setDateRange] = useState<DateRange | undefined>(() => {
+    // Default to last 30 days
+    const today = new Date();
+    const thirtyDaysAgo = new Date(today);
+    thirtyDaysAgo.setDate(today.getDate() - 30);
+    return { from: thirtyDaysAgo, to: today };
+  });
 
   useEffect(() => {
     if (currentChat?.messages) {
@@ -37,6 +48,11 @@ export function ChatInterface({
 
   const handleSendMessage = (message: string) => {
     onSendMessage(message, currentChat);
+  };
+
+  const handleDateRangeChange = (range: DateRange | undefined) => {
+    setDateRange(range);
+    onDateRangeChange?.(range, currentChat);
   };
 
   const getCurrentSampleQuestions = () => {
@@ -138,7 +154,7 @@ export function ChatInterface({
       {/* Header */}
       <div className="border-b border-border p-4 bg-card">
         <div className="flex items-center justify-between">
-          <div>
+          <div className="flex-1">
             <h2 className="font-semibold text-foreground">
               {currentChat?.title || "New Chat"}
             </h2>
@@ -146,9 +162,26 @@ export function ChatInterface({
               {selectedAccount.name} • {messages.length} messages
             </p>
           </div>
-          <Badge variant="outline">
-            Active
-          </Badge>
+          
+          {/* Date Range Picker - shows only when chat has messages */}
+          {messages.length > 0 && (
+            <div className="flex items-center gap-2 animate-fade-in">
+              <DateRangePicker
+                dateRange={dateRange}
+                onDateRangeChange={handleDateRangeChange}
+              />
+              <Badge variant="outline">
+                Active
+              </Badge>
+            </div>
+          )}
+          
+          {/* Active badge only when no messages */}
+          {messages.length === 0 && (
+            <Badge variant="outline">
+              Active
+            </Badge>
+          )}
         </div>
       </div>
 

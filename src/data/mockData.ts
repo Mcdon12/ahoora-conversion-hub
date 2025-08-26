@@ -85,27 +85,27 @@ export const mockData: MockData = {
 
 export const sampleQuestions = {
   generic: [
-    "What's my top performing campaign?",
+    "Show me a performance chart for this month",
     "How can I reduce cost per acquisition?",
-    "Show me this month's performance summary",
-    "Which keywords should I pause?"
+    "Compare current vs previous period",
+    "What's my budget distribution by campaign type?"
   ],
   "Nike": [
-    "How is the Air Jordan campaign performing?",
+    "Show Nike performance trends over time",
     "Which Nike keywords have the highest ROI?",
     "Compare Nike vs Adidas campaign performance",
-    "What's the best time to run Nike ads?"
+    "Chart Nike conversion trends this month"
   ],
   "Adidas": [
-    "Analyze Adidas Boost campaign metrics",
+    "Analyze Adidas performance with charts",
     "How do Adidas campaigns compare to Nike?",
     "What's driving Adidas conversion rates?",
-    "Show Adidas seasonal trends"
+    "Show Adidas seasonal performance trends"
   ],
   "Amazon Store": [
-    "How are my sponsored product ads performing?",
-    "What's the best bidding strategy for Amazon?",
-    "Show me Amazon keyword opportunities",
-    "Analyze my Amazon advertising cost"
+    "Chart my sponsored product performance",
+    "Show Amazon spend distribution by campaign",
+    "Compare Amazon performance vs last month",
+    "Analyze Amazon keyword performance trends"
   ]
 };

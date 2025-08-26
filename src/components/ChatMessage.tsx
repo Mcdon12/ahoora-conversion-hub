@@ -3,6 +3,7 @@ import { Bot, User } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { ChatMessage as ChatMessageType } from "@/types/dashboard";
+import { ChatChart } from "./ChatChart";
 
 interface ChatMessageProps {
   message: ChatMessageType;
@@ -37,15 +38,30 @@ export function ChatMessage({ message }: ChatMessageProps) {
       {/* Message Content */}
       <div className={cn("flex-1 max-w-[80%]", isUser && "flex flex-col items-end")}>
         <div className={cn(
-          "rounded-lg px-4 py-3 text-sm",
+          "rounded-lg text-sm",
           isUser 
-            ? "bg-primary text-primary-foreground ml-auto" 
-            : "bg-card border border-border"
+            ? "bg-primary text-primary-foreground ml-auto px-4 py-3" 
+            : "bg-card border border-border",
+          !isUser && message.chart ? "p-0 overflow-hidden" : "px-4 py-3"
         )}>
           {/* Format message content with line breaks */}
-          <div className="whitespace-pre-wrap">
+          <div className={cn("whitespace-pre-wrap", !isUser && message.chart && "p-4 pb-2")}>
             {message.content}
           </div>
+          
+          {/* Chart component for agent messages */}
+          {!isUser && message.chart && (
+            <div className="px-4 pb-4">
+              <ChatChart
+                type={message.chart.type}
+                data={message.chart.data}
+                config={message.chart.config}
+                title={message.chart.title}
+                xAxisKey={message.chart.xAxisKey}
+                yAxisKey={message.chart.yAxisKey}
+              />
+            </div>
+          )}
         </div>
         
         {/* Timestamp */}
