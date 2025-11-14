@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="flex flex-col items-center md:items-start">
             <Link to="/" className="inline-block mb-4">
-              <img src="/lovable-uploads/06407a7a-8832-46d4-84ce-a9eb08e6c43e.png" alt="Ahoora Logo" className="h-12" />
+              <img src="/ahoora-uploads/ahoora_logo.png" alt="Ahoora Logo" className="h-12" />
             </Link>
             <p className="text-gray-600 text-center md:text-left mb-4">
               Ahoora helps marketers make better decisions with AI-powered insights from their search marketing data while prioritizing data privacy and security.
@@ -39,7 +39,7 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-end">
             <div className="flex items-center gap-4 mb-4">
               <img 
-                src="/lovable-uploads/08575996-12e2-4b28-853e-23fec3a61175.png" 
+                src="/ahoora-uploads/08575996-12e2-4b28-853e-23fec3a61175.png" 
                 alt="Google Logo" 
                 className="h-8 w-8"
               />
