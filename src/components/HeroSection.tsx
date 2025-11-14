@@ -36,7 +36,7 @@ const HeroSection = () => {
           <div className="flex-1 w-full max-w-none lg:max-w-none">
             <div className="relative h-full flex items-center justify-center">
               <div className="w-full bg-white shadow-2xl rounded-lg overflow-hidden border border-gray-100 transform hover:scale-105 transition-transform duration-300">
-                <img src="/lovable-uploads/hero_image.png" alt="AI-Powered Google Ads Integration" className="w-full h-auto object-contain hover:opacity-95 transition-opacity" />
+                <img src="/ahoora-uploads/hero_image.png" alt="AI-Powered Google Ads Integration" className="w-full h-auto object-contain hover:opacity-95 transition-opacity" />
               </div>
             </div>
           </div>
